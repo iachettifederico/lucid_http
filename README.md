@@ -6,7 +6,17 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-`lucid_http` was created to be used in a standalone maner. So the recommended way to install it is:
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'lucid_http'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
 
     $ gem install lucid_http
 
