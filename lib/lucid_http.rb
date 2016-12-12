@@ -2,6 +2,7 @@ require "lucid_http/version"
 require "http"
 
 module LucidHttp
+  VERSION = "0.1.0"
 end
 
 def response
