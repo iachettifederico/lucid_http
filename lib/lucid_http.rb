@@ -7,10 +7,9 @@ module LucidHttp
   end
 
   def _clean
-    @__lucid_http__client = nil
-    @__lucid_http__res    = nil
-    @__lucid_http__body   = nil
-    @__lucid_http__path   = nil
+    instance_variables.grep(/@_lucid_http_/).each do |v|
+      remove_instance_variable(v)
+    end
   end
 
   def _setup(url, action: :get, follow: false, form: nil, **opts)
