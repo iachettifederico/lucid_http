@@ -3,32 +3,32 @@ require "http"
 
 module LucidHttp
   def response
-    @res
+    @__lucid_http__res
   end
 
   def _clean
-    @client = nil
-    @res    = nil
-    @body   = nil
-    @path   = nil
+    @__lucid_http__client = nil
+    @__lucid_http__res    = nil
+    @__lucid_http__body   = nil
+    @__lucid_http__path   = nil
   end
 
   def _setup(url, action: :get, follow: false, form: nil, **opts)
     _clean
-    @client = HTTP.persistent("http://localhost:9292")
+    @__lucid_http__client = HTTP.persistent("http://localhost:9292")
     if follow
-      @client = @client.follow
+      @__lucid_http__client = @__lucid_http__client.follow
     end
-    @path = @client.default_options.persistent + url
-    @res = @client.send(action.to_sym, url, form: form)
+    @__lucid_http__path = @__lucid_http__client.default_options.persistent + url
+    @__lucid_http__res = @__lucid_http__client.send(action.to_sym, url, form: form)
   end
 
   def body
-    @body ||= response.body.to_s
+    @__lucid_http__body ||= response.body.to_s
   end
 
   def status
-    @status = response.status
+    @__lucid_http__status = response.status
   end
 
   def content_type
@@ -36,7 +36,7 @@ module LucidHttp
   end
 
   def path
-    @path
+    @__lucid_http__path
   end
 
   def GET(url, **opts)
