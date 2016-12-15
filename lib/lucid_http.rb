@@ -9,8 +9,8 @@ def response
 end
 
 def _clean
-  instance_variables.grep(/@_lucid_http_/).each do |v|
-    remove_instance_variable(v)
+  instance_variables.grep(/@__lucid_http__/).each do |v|
+    remove_instance_variable(v.to_sym)
   end
 end
 
