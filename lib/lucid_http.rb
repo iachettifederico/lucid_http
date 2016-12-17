@@ -48,7 +48,7 @@ def GET(url, **opts)
              when 500
                body.each_line.first
              else
-               "ERROR: #{status.to_s}"
+               "STATUS: #{status}"
              end
 
   # puts new_body
