@@ -1,7 +1,13 @@
 require "lucid_http/version"
 require "http"
+require "delegate"
 
 module LucidHttp
+  class PrettyStatus < SimpleDelegator
+    def inspect
+      to_s
+    end
+  end
 end
 
 def response
@@ -29,7 +35,7 @@ def body
 end
 
 def status
-  @__lucid_http__status = response.status
+  @__lucid_http__status = LucidHttp::PrettyStatus.new(response.status)
 end
 
 def content_type
