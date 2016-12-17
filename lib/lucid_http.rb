@@ -3,6 +3,14 @@ require "http"
 require "delegate"
 
 module LucidHttp
+  def self.target_url(url="http://localhost:9292")
+    @target_url ||= url
+  end
+
+  def self.target_url=(url="http://localhost:9292")
+    @target_url = url
+  end
+
   class PrettyStatus < SimpleDelegator
     def inspect
       to_s
@@ -14,15 +22,15 @@ def response
   @__lucid_http__res
 end
 
-def _clean
+def __lucid_http__clean
   instance_variables.grep(/@__lucid_http__/).each do |v|
     remove_instance_variable(v.to_sym)
   end
 end
 
-def _setup(url, action: :get, follow: false, form: nil, **opts)
-  _clean
-  @__lucid_http__client = HTTP.persistent("http://localhost:9292")
+def __lucid_http__setup(url, action: :get, follow: false, form: nil, **opts)
+  __lucid_http__clean
+  @__lucid_http__client = HTTP.persistent(LucidHttp.target_url)
   if follow
     @__lucid_http__client = @__lucid_http__client.follow
   end
@@ -47,7 +55,7 @@ def path
 end
 
 def GET(url, **opts)
-  _setup(url, **opts)
+  __lucid_http__setup(url, **opts)
   new_body = case status.to_i
              when 200
                body
@@ -62,6 +70,6 @@ def GET(url, **opts)
 end
 
 def POST(url, **opts)
-  _setup(url, action: :post, **opts)
+  __lucid_http__setup(url, action: :post, **opts)
   body
 end
