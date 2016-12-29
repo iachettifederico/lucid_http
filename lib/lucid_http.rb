@@ -54,6 +54,10 @@ def path
   @__lucid_http__path
 end
 
+def error
+  body.split("\n").first
+end
+
 def GET(url, **opts)
   __lucid_http__setup(url, **opts)
   new_body = case status.to_i
@@ -73,3 +77,4 @@ def POST(url, **opts)
   __lucid_http__setup(url, action: :post, **opts)
   body
 end
+
