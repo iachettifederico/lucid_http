@@ -55,7 +55,11 @@ def path
 end
 
 def error
-  body.split("\n").first
+  if status.to_i == 500
+    body.split("\n").first
+  else
+    "No 500 error found."
+  end
 end
 
 def GET(url, **opts)
@@ -77,4 +81,3 @@ def POST(url, **opts)
   __lucid_http__setup(url, action: :post, **opts)
   body
 end
-
