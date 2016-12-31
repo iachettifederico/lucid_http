@@ -73,26 +73,28 @@ def error
   end
 end
 
-def GET(url, **opts)
-  __lucid_http__setup(url, **opts)
-  new_body = case status.to_i
-             when 200
-               body
-             else
-               "STATUS: #{status}"
-             end
+%i[get post put patch delete].each do |verb|
+  define_method(verb.upcase) do |url, **opts|
+    __lucid_http__setup(url, action: verb, **opts)
+    new_body = case status.to_i
+               when 200
+                 body
+               else
+                 "STATUS: #{status}"
+               end
 
-  new_body
+    new_body
+  end
 end
 
-def POST(url, **opts)
-  __lucid_http__setup(url, action: :post, **opts)
-  new_body = case status.to_i
-             when 200
-               body
-             else
-               "STATUS: #{status}"
-             end
+# def POST(url, **opts)
+#   __lucid_http__setup(url, action: :post, **opts)
+#   new_body = case status.to_i
+#              when 200
+#                body
+#              else
+#                "STATUS: #{status}"
+#              end
 
-  new_body
-end
+#   new_body
+# end
