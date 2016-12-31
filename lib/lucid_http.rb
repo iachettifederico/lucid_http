@@ -67,17 +67,21 @@ def GET(url, **opts)
   new_body = case status.to_i
              when 200
                body
-             when 500
-               body.each_line.first
              else
                "STATUS: #{status}"
              end
 
-  # puts new_body
   new_body
 end
 
 def POST(url, **opts)
   __lucid_http__setup(url, action: :post, **opts)
-  body
+  new_body = case status.to_i
+             when 200
+               body
+             else
+               "STATUS: #{status}"
+             end
+
+  new_body
 end
