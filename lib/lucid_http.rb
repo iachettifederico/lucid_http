@@ -4,8 +4,8 @@ require "delegate"
 require "json"
 
 module LucidHttp
-  def self.target_url(url="http://localhost:9292")
-    @target_url ||= url
+  def self.target_url
+    @target_url ||= ENV.fetch("TARGET_URL") { "http://localhost:9292" }
   end
 
   def self.target_url=(url="http://localhost:9292")
