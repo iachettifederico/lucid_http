@@ -73,7 +73,7 @@ def error
   end
 end
 
-%i[get post put patch delete].each do |verb|
+%i[get post put patch delete head options].each do |verb|
   define_method(verb.upcase) do |url, **opts|
     __lucid_http__setup(url, action: verb, **opts)
     new_body = case status.to_i
