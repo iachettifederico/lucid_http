@@ -46,7 +46,7 @@ end
 
 def __lucid_http__get_body
   original_body = response.body.to_s
-  if !json
+  if !@__lucid_http__json
     original_body
   else
     JSON.parse(original_body)
