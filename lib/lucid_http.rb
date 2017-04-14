@@ -32,9 +32,13 @@ end
 def __lucid_http__setup(url, action: :get, follow: false, form: nil, json: false, **opts)
   __lucid_http__clean
   @__lucid_http__client = HTTP.persistent(LucidHttp.target_url)
+  if json
+    @__lucid_http__client = @__lucid_http__client.accept("application/json")
+  end
   if follow
     @__lucid_http__client = @__lucid_http__client.follow
   end
+
   @__lucid_http__path = @__lucid_http__client.default_options.persistent + url
   @__lucid_http__res = @__lucid_http__client.send(action.to_sym, url, form: form)
   @__lucid_http__json = json
