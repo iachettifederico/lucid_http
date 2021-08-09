@@ -44,6 +44,10 @@ def __lucid_http__setup(url, action: :get, follow: false, form: nil, json: false
   @__lucid_http__json = json
 end
 
+def headers
+  @__lucid_http__headers ||= response.headers.to_h
+end
+
 def body
   @__lucid_http__body ||= __lucid_http__get_body
 end
