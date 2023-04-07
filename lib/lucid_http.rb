@@ -13,18 +13,21 @@ module LucidHttp
     end
 
     %i[get post put patch delete options].each do |verb|
-      define_method(verb.upcase) do |path, formatter: :plain, follower: :no_follow|
-        do_verb(verb: verb, path: path, formatter: formatter, follower: follower)
+      define_method(verb.upcase) do |path, formatter: :plain, follower: :no_follow, form: {}|
+        do_verb(
+          verb: verb, path: path,
+          formatter: formatter, follower: follower,
+          form: form,
+        )
       end
-
     end
 
-    def do_verb(verb:, path:, formatter:, follower:)
+    def do_verb(verb:, path:, formatter:, follower:, form:)
       LucidHttp::Response.new(
         base_url: base_url, path: path, verb: verb,
         formatter: formatter, follower: follower,
+        form: form,
       )
     end
-
   end
 end

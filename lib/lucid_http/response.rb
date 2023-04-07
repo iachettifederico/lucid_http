@@ -3,14 +3,15 @@ module LucidHttp
     attr_reader :base_url
     attr_reader :path
 
-    def initialize(base_url:, path:, formatter:, follower:, verb: :get)
+    def initialize(base_url:, path:, formatter:, follower:, verb: :get, form: {})
       @base_url  = base_url
       @path      = path
       @formatter = LucidHttp::Formatter.for(formatter)
       @follower  = LucidHttp::Follower.for(follower).client
       @verb      = verb
+      @form      = form
 
-      @response = @follower.send(@verb, url)
+      @response = @follower.send(@verb, url, params: form)
     end
 
     def body
