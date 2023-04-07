@@ -12,11 +12,16 @@ module LucidHttp
       @base_url = base_url
     end
 
-    def GET(path,
-            formatter: LucidHttp::Formatter::PlainFormatter.new,
-            follower: LucidHttp::Follower::NoFollow.new)
+    %i[get post put patch delete options].each do |verb|
+      define_method(verb.upcase) do |path, formatter: LucidHttp::Formatter::PlainFormatter.new, follower: LucidHttp::Follower::NoFollow.new|
+        do_verb(verb: verb, path: path, formatter: formatter, follower: follower)
+      end
+
+    end
+
+    def do_verb(verb:, path:, formatter:, follower:)
       LucidHttp::Response.new(
-        base_url: base_url, path: path,
+        base_url: base_url, path: path, verb: verb,
         formatter: formatter, follower: follower,
       )
     end

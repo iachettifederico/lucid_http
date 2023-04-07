@@ -3,12 +3,14 @@ module LucidHttp
     attr_reader :base_url
     attr_reader :path
 
-    def initialize(base_url:, path:, formatter:, follower:)
+    def initialize(base_url:, path:, formatter:, follower:, verb: :get)
       @base_url  = base_url
       @path      = path
       @formatter = formatter
+      @follower  = follower.client
+      @verb      = verb
 
-      @response = follower.get(url)
+      @response = @follower.send(@verb, url)
     end
 
     def body
@@ -29,6 +31,10 @@ module LucidHttp
 
     def error
       body.split("\n").first
+    end
+
+    def verb
+      @verb.to_s.upcase
     end
   end
 end

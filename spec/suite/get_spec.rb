@@ -6,7 +6,7 @@ RSpec.describe "GET" do
     expect(client.base_url).to eql("http://localhost:9292")
   end
 
-  it "can make arequest" do
+  it "can make a request" do
     response = client.GET("/hello")
 
     expect(response.body).to eql("<h1>Hello World!</h1>")
