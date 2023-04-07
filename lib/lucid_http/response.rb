@@ -6,8 +6,8 @@ module LucidHttp
     def initialize(base_url:, path:, formatter:, follower:, verb: :get)
       @base_url  = base_url
       @path      = path
-      @formatter = formatter
-      @follower  = follower.client
+      @formatter = LucidHttp::Formatter.for(formatter)
+      @follower  = LucidHttp::Follower.for(follower).client
       @verb      = verb
 
       @response = @follower.send(@verb, url)

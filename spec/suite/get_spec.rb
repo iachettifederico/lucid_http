@@ -45,7 +45,7 @@ RSpec.describe "GET" do
   end
 
   it "can follow redirects" do
-    response = client.GET("/redirect_me", follower: LucidHttp::Follower::Follow.new)
+    response = client.GET("/redirect_me", follower: :follow)
 
     expect(response.body).to eql("You have arrived here due to a redirection.")
     expect(response.status).to eql("200 OK")
@@ -62,7 +62,7 @@ RSpec.describe "GET" do
   end
 
   it "can format json responses as hashes" do
-    response = client.GET("/hello_world.json", formatter: LucidHttp::Formatter::JsonFormatter.new)
+    response = client.GET("/hello_world.json", formatter: :json)
 
     expected_response = {
       "content"   => "You said: hello_world",

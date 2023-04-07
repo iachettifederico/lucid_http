@@ -1,6 +1,14 @@
 module LucidHttp
 
   module Follower
+
+    def self.for(keyword)
+      {
+        no_follow: NoFollow.new,
+        follow:    Follow.new,
+      }.fetch(keyword)
+    end
+
     class NoFollow
       def client
         HTTP
