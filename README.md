@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+An explanation of the usage for this gem is on the book Mastering Roda, you can follow [this link](https://fiachetti.gitlab.io/mastering-roda/#a-quick-introduction-to-lucid_http) to find it
 
 ## Development
 
