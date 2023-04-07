@@ -88,4 +88,11 @@ RSpec.describe "root context" do
     expect(body).to eql(expected_response)
   end
 
+  it "can get an error" do
+    GET("/500")
+
+    expect(status).to eql("500 Internal Server Error")
+    expect(error).to eql("ArgumentError: wrong number of arguments (given 0, expected 2+) (ArgumentError)")
+  end
+
 end

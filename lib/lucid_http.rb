@@ -42,7 +42,6 @@ end
   end
 end
 
-
 def body
   @__response.body
 end
@@ -65,4 +64,8 @@ end
 
 def path
   @__response.path
+end
+
+def error
+  @__response.error
 end
