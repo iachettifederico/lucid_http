@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9292/hello_world.json
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - localhost:9292
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '127'
+      Server:
+      - WEBrick/1.8.1 (Ruby/3.2.1/2023-02-08)
+      Date:
+      - Fri, 07 Apr 2023 12:00:54 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"content":"You said: hello_world","keyword":"hello_world","timestamp":"2016-12-31
+        15:00:42 -0300","method":"GET","status":200}'
+  recorded_at: Fri, 07 Apr 2023 12:00:54 GMT
+recorded_with: VCR 6.1.0

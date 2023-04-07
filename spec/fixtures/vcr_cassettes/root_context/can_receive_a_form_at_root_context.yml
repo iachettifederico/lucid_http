@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:9292/params?item=book&price=50.0&quantity=1&title=The%20complete%20guide%20to%20doing%20absolutely%20nothing%20at%20all.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - localhost:9292
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '110'
+      Server:
+      - WEBrick/1.8.1 (Ruby/3.2.1/2023-02-08)
+      Date:
+      - Fri, 07 Apr 2023 12:00:54 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"item":"book","quantity":"1","price":"50.0","title":"The complete
+        guide to doing absolutely nothing at all."}'
+  recorded_at: Fri, 07 Apr 2023 12:00:54 GMT
+recorded_with: VCR 6.1.0

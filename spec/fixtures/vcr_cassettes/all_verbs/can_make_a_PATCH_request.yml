@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://localhost:9292/verb
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - localhost:9292
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '7'
+      Server:
+      - WEBrick/1.8.1 (Ruby/3.2.1/2023-02-08)
+      Date:
+      - Fri, 07 Apr 2023 12:00:54 GMT
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: "<PATCH>"
+  recorded_at: Fri, 07 Apr 2023 12:00:54 GMT
+recorded_with: VCR 6.1.0

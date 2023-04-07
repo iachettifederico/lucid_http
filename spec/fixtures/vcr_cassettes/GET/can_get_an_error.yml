@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9292/500
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - localhost:9292
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Content-Type:
+      - text/plain
+      Content-Length:
+      - '2007'
+      Server:
+      - WEBrick/1.8.1 (Ruby/3.2.1/2023-02-08)
+      Date:
+      - Fri, 07 Apr 2023 12:00:54 GMT
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: "ArgumentError: wrong number of arguments (given 0, expected 2+) (ArgumentError)\n\t/home/fedex/code/gems/lucid_http/spec/roda_app/test_roda_app.ru:25:in
+        `block (3 levels) in <main>'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda/request.rb:603:in
+        `if_match'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda/request.rb:530:in
+        `_verb'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda/request.rb:104:in
+        `get'\n\t/home/fedex/code/gems/lucid_http/spec/roda_app/test_roda_app.ru:24:in
+        `block (2 levels) in <main>'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:518:in
+        `_roda_run_main_route'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:496:in
+        `block in _roda_handle_main_route'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:494:in
+        `catch'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:494:in
+        `_roda_handle_main_route'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:380:in
+        `block in base_rack_app_callable'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/roda-3.66.0/lib/roda.rb:53:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/tempfile_reaper.rb:20:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/lint.rb:63:in
+        `response'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/lint.rb:35:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/show_exceptions.rb:27:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/common_logger.rb:43:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rack-3.0.7/lib/rack/content_length.rb:20:in
+        `call'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/rackup-2.1.0/lib/rackup/handler/webrick.rb:111:in
+        `service'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/webrick-1.8.1/lib/webrick/httpserver.rb:140:in
+        `service'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/webrick-1.8.1/lib/webrick/httpserver.rb:96:in
+        `run'\n\t/home/fedex/.rvm/gems/ruby-3.2.1/gems/webrick-1.8.1/lib/webrick/server.rb:310:in
+        `block in start_thread'"
+  recorded_at: Fri, 07 Apr 2023 12:00:54 GMT
+recorded_with: VCR 6.1.0
