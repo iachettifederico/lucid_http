@@ -3,14 +3,16 @@ module LucidHttp
     attr_reader :base_url
     attr_reader :path
 
-    def initialize(base_url:, path:, follower:)
-      @base_url = base_url
-      @path = path
+    def initialize(base_url:, path:, formatter:, follower:)
+      @base_url  = base_url
+      @path      = path
+      @formatter = formatter
+
       @response = follower.get(url)
     end
 
     def body
-      @response.body.to_s
+      @formatter.call(@response.body.to_s)
     end
 
     def status

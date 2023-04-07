@@ -62,4 +62,19 @@ RSpec.describe "pepe" do
     expect(response.error).to eql("ArgumentError: wrong number of arguments (given 0, expected 2+) (ArgumentError)")
   end
 
+  it "does something" do
+    response = client.GET("/hello_world.json", formatter: LucidHttp::Formatter::JsonFormatter.new)
+
+    expected_response = {
+      "content"   => "You said: hello_world",
+      "keyword"   => "hello_world",
+      "timestamp" => "2016-12-31 15:00:42 -0300",
+      "method"    => "GET",
+      "status"    => 200,
+    }
+
+    expect(response.body).to eql(expected_response)
+    expect(response.content_type).to eql("application/json")
+  end
+
 end
