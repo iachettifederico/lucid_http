@@ -2,6 +2,11 @@ require "lucid_http"
 
 RSpec.describe "root context" do
   it "can make a request" do
+    expect(GET("/verb")).to eql("<GET>")
+    expect(verb).to eql("GET")
+  end
+
+  it "can make a request" do
     GET("/verb")
 
     expect(body).to eql("<GET>")

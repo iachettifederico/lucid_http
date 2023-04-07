@@ -39,6 +39,7 @@ end
       formatter: formatter, follower: follower,
       form: form,
     )
+    @__response.body
   end
 end
 
