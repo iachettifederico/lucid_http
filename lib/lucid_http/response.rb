@@ -31,7 +31,7 @@ module LucidHttp
     end
 
     def error
-      body.split("\n").first
+      body.split("\n").first || "No error found"
     end
 
     def verb

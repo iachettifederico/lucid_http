@@ -61,6 +61,13 @@ RSpec.describe "GET", :vcr do
     expect(response.error).to eql("ArgumentError: wrong number of arguments (given 0, expected 2+) (ArgumentError)")
   end
 
+  it "returns no error if there is no error" do
+    response = client.GET("/not_500")
+
+    expect(response.status).to eql("200 OK")
+    expect(response.error).to eql("No error found")
+  end
+
   it "can format json responses as hashes" do
     response = client.GET("/hello_world.json", formatter: :json)
 
