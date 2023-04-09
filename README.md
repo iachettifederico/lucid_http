@@ -6,7 +6,11 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Add this line to your application's Gemfile:
+The rocommended way to install lucid_http is by running
+
+    $ gem install lucid_http
+
+You could also add it to your application's Gemfile, but this gem is not meant to be used in this way:
 
 ```ruby
 gem 'lucid_http'
@@ -15,10 +19,6 @@ gem 'lucid_http'
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install lucid_http
 
 ## Usage
 
