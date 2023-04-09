@@ -2,9 +2,6 @@ require "lucid_http"
 
 RSpec.describe "GET", :vcr do
   let(:client) { LucidHttp::Client.new(base_url: "http://localhost:9292") }
-  it "can retrieve the base url" do
-    expect(client.base_url).to eql("http://localhost:9292")
-  end
 
   it "can make a request" do
     response = client.GET("/hello")

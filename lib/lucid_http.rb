@@ -8,7 +8,7 @@ module LucidHttp
   class Client
     attr_reader :base_url
 
-    def initialize(base_url:)
+    def initialize(base_url: ENV.fetch("LUCID_HTTP_BASE_URL"))
       @base_url = base_url
     end
 
@@ -43,30 +43,34 @@ end
   end
 end
 
+def response
+  @__response
+end
+
 def body
-  @__response.body
+  response.body
 end
 
 def verb
-  @__response.verb
+  response.verb
 end
 
 def status
-  @__response.status
+  response.status
 end
 
 def content_type
-  @__response.content_type
+  response.content_type
 end
 
 def url
-  @__response.url
+  response.url
 end
 
 def path
-  @__response.path
+  response.path
 end
 
 def error
-  @__response.error
+  response.error
 end
