@@ -5,11 +5,21 @@ require "lucid_http/formatters"
 require "lucid_http/response"
 
 module LucidHttp
-  class Client
-    attr_reader :base_url
+  def self.base_url
+    @base_url
+  end
 
+  def self.base_url=(new_base_url)
+    @base_url = new_base_url
+  end
+
+  class Client
     def initialize(base_url: ENV.fetch("LUCID_HTTP_BASE_URL"))
-      @base_url = base_url
+      LucidHttp.base_url = base_url
+    end
+
+    def base_url
+      LucidHttp.base_url
     end
 
     %i[get post put patch delete options].each do |verb|
