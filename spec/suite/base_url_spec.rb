@@ -1,6 +1,12 @@
 require "lucid_http"
 
 RSpec.describe "base url" do
+  it "has a default base url" do
+    LucidHttp.reset_default_base_url!
+
+    expect(LucidHttp.base_url).to eql("http://localhost:9292")
+  end
+
   it "can receive the base_url in the constructor" do
     client = LucidHttp::Client.new(base_url: "http://localhost:9292")
 

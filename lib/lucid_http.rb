@@ -6,11 +6,15 @@ require "lucid_http/response"
 
 module LucidHttp
   def self.base_url
-    @base_url
+    @base_url || "http://localhost:9292"
   end
 
   def self.base_url=(new_base_url)
     @base_url = new_base_url
+  end
+
+  def self.reset_default_base_url!
+    self.base_url = nil
   end
 
   class Client
