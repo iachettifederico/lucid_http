@@ -61,6 +61,10 @@ def response
   @__response
 end
 
+def headers
+  @__lucid_http__headers ||= response.headers.to_h
+end
+
 def body
   response.body
 end
